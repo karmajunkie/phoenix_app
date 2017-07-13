@@ -41,7 +41,8 @@ defmodule Present.Mixfile do
      {:cors_plug, "~> 1.2"},
      {:comeonin, "~> 2.5"},
      {:guardian, "~> 0.14.4"},
-     {:mime, "~> 1.1"}]
+     {:mime, "~> 1.1"},
+     {:timex, "~> 3.1"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

@@ -1,0 +1,11 @@
+{
+  "email": "Adresse e-mail",
+  "forgotten": "Mot de passe oublié ?",
+  "forgotten_confirm": "Recevoir un e-mail de réinitialisation de mot de passe",
+  "login": "Connexion",
+  "or": "ou",
+  "password": "Mot de passe",
+  "password2": "Confirmation",
+  "register": "Inscription",
+  "username": "Nom d'utilisateur"
+}

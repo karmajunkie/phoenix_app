@@ -19,7 +19,7 @@ defmodule Present.Map.Place do
     field :longitude, :float
     field :title, :string
     many_to_many :users, User, join_through: UserPlace
-    #has_many :users, UserPlace
+    has_many :user_places, UserPlace
 
     timestamps()
   end

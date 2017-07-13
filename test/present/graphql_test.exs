@@ -1,7 +1,7 @@
 defmodule Present.GraphQLTest do
   use Present.DataCase
 
-  alias Present.{ Accounts }
+  alias Present.{ Accounts, Accounts.UserPlace, Accounts.User }
 
 
   setup do
@@ -12,8 +12,47 @@ defmodule Present.GraphQLTest do
   end
 
 
+  test "users don't need userplace to resolve", _ctx do
+    %{data: %{"places" => [ %{"users"  => [user]  } ] }} = """
+    {
+    places {
+    id
+    city
+    department
+    latitude
+    longitude
+    title
+    users {
+    id
+    email
+    inserted_at
+    }
+    }
+    }
+    """
+    |> Absinthe.run!(Present.Web.Schema )
+
+    assert Map.has_key?(user, "inserted_at")
+  end
+
+  test "user_place resolves independently", _ctx do
+    %{data: %{"places" => [ %{ "userPlaces" => [userplace | _]} ] }} = """
+    {
+    places {
+    userPlaces {
+    id
+    inserted_at
+    }
+    }
+    }
+    """
+    |> Absinthe.run!(Present.Web.Schema )
+
+    assert Map.has_key?(userplace, "inserted_at")
+  end
+
   test "inserted_at attribute", _ctx do
-     %{data: %{"places" => [ %{"users"  => [user],  "user_places" => [userplace | _]} ] }} = """
+    %{data: %{"places" => [ %{"users"  => [user],  "user_places" => [userplace | _]} ] }} = """
     {
       places {
       id

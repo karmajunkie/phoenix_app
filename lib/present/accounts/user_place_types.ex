@@ -7,10 +7,10 @@ defmodule Present.Accounts.UserPlace.Types do
     serialize &Timex.format!(&1, "{ISO:Extended:Z}")
   end
 
-  scalar :timestamptz do
-    parse &Timex.parse(&1.value, "{ISOz}")
-    serialize &Timex.format!(&1, "{ISOz}")
-  end
+  # scalar :timestamptz do
+  #   parse &Timex.parse(&1.value, "{ISOz}")
+  #   serialize &Timex.format!(&1, "{ISOz}")
+  # end
 
   object :user_place do
     field :id, :id

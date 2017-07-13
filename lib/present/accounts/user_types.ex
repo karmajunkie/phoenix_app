@@ -23,6 +23,7 @@ defmodule Present.Accounts.User.Types do
     field :username, :string
     field :email, :string
     field :password_hash, :string
+    field :inserted_at, :timestamptz
     field :places, list_of(:place), resolve: assoc(:places)
   end
 end
